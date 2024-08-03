@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+/.idea
+/.idea/.gitignore
+/cmake-build-debug/
+/CMakeLists.txt
