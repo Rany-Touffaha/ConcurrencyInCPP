@@ -1,10 +1,23 @@
-#include <iostream>
+#include <thread>
+#include <chrono>
+#include <unistd.h>
 
 using namespace std;
 
-int main(){
+void cpu_waster() {
+    printf("CPU Waster Process ID: %d\n", getpid());
+    printf("CPU Waster Thread ID %d\n", this_thread::get_id());
+    while(true) continue;
+}
 
-    cout << "Concurrency Project" << endl;
+int main() {
+    printf("Main Process ID: %d\n", getpid());
+    printf("Main Thread ID: %d\n", this_thread::get_id());
+    thread thread1(cpu_waster);
+    thread thread2(cpu_waster);
 
-    return 0;
+    while(true) {
+        this_thread::sleep_for(chrono::seconds(1));
+    }
+
 }
